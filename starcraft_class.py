@@ -13,3 +13,5 @@ class FlyableUnit(Flyable, Unit): ## super로 다중상속시 앞에있는 클�
         Flyable.__init__(self)
 
 dropship=FlyableUnit()
+def function():
+    
