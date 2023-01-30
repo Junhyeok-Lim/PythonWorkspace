@@ -16,3 +16,6 @@ dropship=FlyableUnit()
 
 def function():
     pass
+
+def function2():
+    pass
