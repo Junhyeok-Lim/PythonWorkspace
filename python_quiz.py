@@ -68,3 +68,4 @@ def do(alist):
     return print([x for x in alist if x < 0] + [x for x in alist if x >= 0])
 
 do([-1, 1, 3, -2, 2])
+
