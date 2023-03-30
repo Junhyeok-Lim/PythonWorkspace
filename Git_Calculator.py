@@ -5,3 +5,6 @@ def sum(a,b):
 
 def extract(a,b):
     return a-b
+
+def multiply(a,b):
+    return a*b
