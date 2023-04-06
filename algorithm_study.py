@@ -301,24 +301,102 @@ from math import sqrt
 
 
 
-def course_selection(course_list):
-    # 수업이 끝나는 순서로 정렬
-    sorted_list = sorted(course_list, key=lambda x: x[1])
+# def course_selection(course_list):
+#     # 수업이 끝나는 순서로 정렬
+#     sorted_list = sorted(course_list, key=lambda x: x[1])
 
-    #가장 먼저 끝나는 수업은 무조건 듣는다.
-    my_selection = [sorted_list[0]]
+#     #가장 먼저 끝나는 수업은 무조건 듣는다.
+#     my_selection = [sorted_list[0]]
 
-    #이미 선택한 수업과 안 겹치는 수업 중 가장 빨리 끝나는 수업을 고른다
-    for course in sorted_list:
-        # 마지막 수업이 끝나기 전에 새 수업이 시작하면 겹친다
-        if course[0] > my_selection[-1][1]:
-            my_selection.append(course)
+#     #이미 선택한 수업과 안 겹치는 수업 중 가장 빨리 끝나는 수업을 고른다
+#     for course in sorted_list:
+#         # 마지막 수업이 끝나기 전에 새 수업이 시작하면 겹친다
+#         if course[0] > my_selection[-1][1]:
+#             my_selection.append(course)
 
-    return my_selection
+#     return my_selection
 
 
-# 테스트 코드
-print(course_selection([(6, 10), (2, 3), (4, 5), (1, 7), (6, 8), (9, 10)]))
-print(course_selection([(1, 2), (3, 4), (0, 6), (5, 7), (8, 9), (5, 9)]))
-print(course_selection([(4, 7), (2, 5), (1, 3), (8, 10), (5, 9), (2, 5), (13, 16), (9, 11), (1, 8)]))
+# # 테스트 코드
+# print(course_selection([(6, 10), (2, 3), (4, 5), (1, 7), (6, 8), (9, 10)]))
+# print(course_selection([(1, 2), (3, 4), (0, 6), (5, 7), (8, 9), (5, 9)]))
+# print(course_selection([(4, 7), (2, 5), (1, 3), (8, 10), (5, 9), (2, 5), (13, 16), (9, 11), (1, 8)]))
 
+
+# def sublist_max(profits):
+#     max_profit=profits[0]
+
+#     for i in range(len(profits)):
+#         # i 부터 j 까지 profit 합을 보관
+#         total = 0
+
+#         for j in range(i, len(profits)):
+#             total += profits[j]
+
+#             # i부터 j까지 수익의 합이 최대 수익이라면, max_profit 업데이트
+#             max_profit=max(max_profit, total)
+
+#     return max_profit
+
+
+
+
+# def power(x, y):
+#     if y==0:
+#         return 1
+    
+#     subresult=power(x,y//2)
+
+#     if y%2==0:
+#         return subresult*subresult
+    
+#     else:
+#         return x*subresult*subresult
+
+
+# print(power(3, 5))
+# print(power(5, 6))
+# print(power(7, 9))
+
+
+# def select_stops(water_stops, capacity):
+    
+#     stop_list = []
+
+#     prev_stop=0
+
+#     for i in range(len(water_stops)):
+#         # i 까지 갈 수 없으면, i-1 지점 약수터를 들른다.
+#         if water_stops[i]-prev_stop>capacity:
+#             stop_list.append(water_stops[i-1])
+#             prev_stop=water_stops[i-1]
+#     # 마지막 약수터는 무조건 간다.
+#     stop_list.append(water_stops[-1])
+
+#     return stop_list
+
+
+# # 테스트 코드
+# list1 = [1, 4, 5, 7, 11, 12, 13, 16, 18, 20, 22, 24, 26]
+# print(select_stops(list1, 4))
+
+# list2 = [5, 8, 12, 17, 20, 22, 23, 24, 28, 32, 38, 42, 44, 47]
+# print(select_stops(list2, 6))
+
+
+def find_same_number(some_list):
+    
+    elements_seen = {}
+
+    for element in some_list:
+        # 이미 나온 요소인지 확인하고 맞으면 요소를 리턴
+        if element in elements_seen:
+            return element
+
+        elements_seen[element] = True
+    
+
+# 중복되는 수 ‘하나’만 리턴합니다.
+print(find_same_number([1, 4, 3, 5, 3, 2]))
+print(find_same_number([4, 1, 5, 2, 3, 5]))
+print(find_same_number([5, 2, 3, 4, 1, 6, 7, 8, 9, 3]))
