@@ -18,7 +18,7 @@
 // console.log(6/3);
 // console.log(6%4);
 
-// const name = prompt("이름을 입력하세요.");
-// alert("환영합니다, " + name + "님");
+const name = prompt("이름을 입력하세요.");
+ alert("환영합니다, " + name + "님");
 
 var num = 10;

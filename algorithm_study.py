@@ -384,19 +384,166 @@ from math import sqrt
 # print(select_stops(list2, 6))
 
 
-def find_same_number(some_list):
+# def find_same_number(some_list):
     
-    elements_seen = {}
+#     elements_seen = {}
 
-    for element in some_list:
-        # 이미 나온 요소인지 확인하고 맞으면 요소를 리턴
-        if element in elements_seen:
-            return element
+#     for element in some_list:
+#         # 이미 나온 요소인지 확인하고 맞으면 요소를 리턴
+#         if element in elements_seen:
+#             return element
 
-        elements_seen[element] = True
+#         elements_seen[element] = True
     
 
-# 중복되는 수 ‘하나’만 리턴합니다.
-print(find_same_number([1, 4, 3, 5, 3, 2]))
-print(find_same_number([4, 1, 5, 2, 3, 5]))
-print(find_same_number([5, 2, 3, 4, 1, 6, 7, 8, 9, 3]))
+# # 중복되는 수 ‘하나’만 리턴합니다.
+# print(find_same_number([1, 4, 3, 5, 3, 2]))
+# print(find_same_number([4, 1, 5, 2, 3, 5]))
+# print(find_same_number([5, 2, 3, 4, 1, 6, 7, 8, 9, 3]))
+
+
+# def max_crossing_sum(profits, start, end):
+#     # 여기에 코드를 작성하세요
+#     mid = (start + end) // 2
+
+#     left_sum = 0
+#     left_max = profits[mid]
+
+#     for i in range(mid, start -1, -1):
+#         left_sum += profits[i]
+#         left_max = max(left_max, left_sum)
+
+#     right_sum = 0
+#     right_max = profits[mid+1]
+
+#     for i in range(mid+1, end+1):
+#         right_sum += profits[i]
+#         right_max = max(right_max, right_sum)
+
+#     return left_max + right_max
+
+# def sublist_max(profits, start, end):
+#     if start == end:
+#         return profits[start]
+    
+#     mid = (start + end) //2
+
+#     max_left = sublist_max(profits, start, mid)
+#     max_right = sublist_max(profits, mid+1, end)
+#     max_cross = max_crossing_sum(profits, start, end)
+
+#     return max(max_left, max_right, max_cross)
+    
+
+# # 테스트 코드
+# list1 = [-2, -3, 4, -1, -2, 1, 5, -3]
+# print(sublist_max(list1, 0, len(list1) - 1))
+
+# list2 = [4, 7, -6, 9, 2, 6, -5, 7, 3, 1, -1, -7, 2]
+# print(sublist_max(list2, 0, len(list2) - 1))
+
+# list3 = [9, -8, 0, -7, 8, -6, -3, -8, 9, 2, 8, 3, -5, 1, -7, -1, 10, -1, -9, -5]
+# print(sublist_max(list3, 0, len(list3) - 1))
+
+# list4 = [-9, -8, -8, 6, -4, 6, -2, -3, -10, -8, -9, -9, 6, 2, 8, -1, -1]
+# print(sublist_max(list4, 0, len(list4) - 1))
+
+# def sublist_max(profits):
+#     max_profit=profits[0]
+#     max_check = profits[0]
+
+    
+#     for i in range(1, len(profits)):
+        
+        
+#         max_check = max(max_check + profits[i], profits[i])
+
+#         max_profit = max(max_profit, max_check)
+
+        
+
+#     return max_profit
+
+# # 테스트 코드
+# print(sublist_max([7, -3, 4, -8]))
+# print(sublist_max([-2, -3, 4, -1, -2, 1, 5, -3, -1]))
+
+
+# #Brute Force 이용
+
+# def max_profit(stock_list):
+#     # 현재까지 최대 수익
+#     max_profit_so_far = stock_list[1] - stock_list[0]
+
+#     # 한 번 사고 파는 모든 조합을 본다.
+#     for i in range(len(stock_list)-1):
+#         for j in range(i+1, len(stock_list)):
+#         # i에서 사고 j에 파는 것이 현재까지의 최대 수익이라면 max_so_far를 바꾼다.
+#             max_profit_so_far = max(max_profit_so_far, stock_list[j]-stock_list[i])
+
+#     return max_profit_so_far
+
+# # 테스트 코드
+# print(max_profit([7, 1, 5, 3, 6, 4]))
+# print(max_profit([7, 6, 4, 3, 1]))
+# print(max_profit([11, 13, 9, 13, 20, 14, 19, 12, 19, 13]))
+# print(max_profit([12, 4, 11, 18, 17, 19, 1, 19, 14, 13, 7, 15, 10, 1, 3, 6]))
+
+# def max_profit(stock_list):
+#     # 현재까지의 최대 수익
+#     max_profit_so_far = stock_list[1] - stock_list[0]
+
+#     # 현재까지의 최소 주식 가격
+#     min_so_far = min(stock_list[0], stock_list[1])
+
+#     # 주식 가격을 하나씩 확인
+#     for i in range(2, len(stock_list)):
+#         # 현재 파는 것이 좋은지 확인
+#         max_profit_so_far = max(max_profit_so_far, stock_list[i] - min_so_far)
+
+#         # 현재 주식 가격이 최솟값인지 확인
+#         min_so_far = min(min_so_far, stock_list[i])
+
+#     return max_profit_so_far
+
+# print(max_profit([7, 1, 5, 3, 6, 4]))
+# print(max_profit([7, 6, 4, 3, 1]))
+# print(max_profit([11, 13, 9, 13, 20, 14, 19, 12, 19, 13]))
+# print(max_profit([12, 4, 11, 18, 17, 19, 1, 19, 14, 13, 7, 15, 10, 1, 3, 6]))
+
+
+# 출근하는 방법1
+# def staircase(n):
+#     a, b = 1, 1
+#     for i in range(n):
+#         a, b = b, a+b
+#     return a
+
+# print(staircase(0))
+# print(staircase(6))
+# print(staircase(15))
+# print(staircase(25))
+# print(staircase(41))
+
+
+## 출근하는 방법2
+# 높이 n개의 계단을 올라가는 방법을 리턴
+def staircase(stairs, possible_steps):
+    # 계단 높이가 0 이거나 1 이면 올라가는 방법은 한 가지밖에 없음.
+    number_of_ways = [1,1]
+
+    for height in range(2, stairs + 1):
+        number_of_ways.append(0)
+
+        for steps in possible_steps:
+            #음수 계단은 존재하지 않기 때문에 무시
+            if height - steps>=0:
+                number_of_ways[height] += number_of_ways[height - steps]
+
+    return number_of_ways[stairs]
+
+
+print(staircase(5, [1, 2, 3]))
+print(staircase(6, [1, 2, 3]))
+print(staircase(7, [1, 2, 4]))
+print(staircase(8, [1, 3, 5]))
