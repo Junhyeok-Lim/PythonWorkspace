@@ -1,41 +1,29 @@
-from PyQt5.QtWidgets import QWidget, QLabel, QComboBox, QApplication
-
-import sys
+import sys 
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QWidget, QLCDNumber, QApplication, QVBoxLayout, QSlider
 
 class Example(QWidget):
     def __init__(self):
         super().__init__()
-
         self.initUI()
 
     def initUI(self):
-        self.lbl = QLabel("Ubuntu", self)
+        lcd = QLCDNumber(self)
+        sld = QSlider(Qt.Horizontal, self)
 
-        combo = QComboBox(self)
-        combo.addItem("Ubuntu")
-        combo.addItem("Mandriva")
-        combo.addItem("Fedora")
-        combo.addItem("Arch")
-        combo.addItem("Gentoo")
+        vbox = QVBoxLayout()
+        vbox.addWidget(lcd)
+        vbox.addWidget(sld)
 
-        combo.move(50, 50)
-        self.lbl.move(50, 150)
+        self.setLayout(vbox)
+        sld.valueChanged.connect(lcd.display) # 슬라이더에 값이 변경됐을 경우 연결될 슬롯을 정해준다.(괄호 안)
 
-        combo.activated[str].connect(self.onActivated)
 
-        
         self.setGeometry(300, 300, 250, 150)
-        self.setWindowTitle('QComboBox')
+        self.setWindowTitle('Signal and slot')
         self.show()
-
-  
-    def onActivated(self, text):
-        self.lbl.setText(text)
-        self.lbl.adjustSize()
-  
-
-
+    
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
+    app=QApplication(sys.argv)
     ex = Example()
     sys.exit(app.exec_())

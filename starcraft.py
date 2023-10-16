@@ -135,8 +135,8 @@ attack_units.append(t2)
 attack_units.append(w1)
 
 #전군 이동
-for unit in attack_units:
-    unit.move('1시')
+# for unit in attack_units:
+    # unit.move('1시')
 
 #탱크 시즈모드 개발
 Tank.seize_developed=True
